@@ -1,0 +1,112 @@
+React
+	Introdução
+		Porque react?
+			React é um framework desenvolvido pelo facebook 
+			May 29, 2013
+
+		Qual é a abrangência do tutorial?
+			desde "hello world" até build e publicação do siste.
+		Quem usa react
+			Yahoo
+			Netflix
+			WhatsApp
+			Zendesk
+			Wix
+			Uber
+			Twitter - Fabric
+			The New York Times
+			Salesforce
+			R7 Esportes - Automobilismo
+			Podio
+			Pixate
+			Instagram
+			Facebook messenger
+			HipChat
+			Dropbox
+			BBC
+			Atlassian
+	Aula 01
+		pré-requisitos
+			Sistema operacinal
+				Até a aula 06 tudo deve funcionar tanto no windows, mac os e linux. Minha sugestão para o desenvolvimento open source é não utilizar windows, pois muitos projetos não são validados nesse ambiente.
+
+			Editor de texto
+				Você pode escolher qualquer editor de texto que você esteja familiarizado.
+
+				Atom(https://atom.io)
+					se você estiver procurando por um editor de texto open source e grátis, vale a pena conferir esse site 
+				SublimeText(http://www.sublimetext.com/3)
+					É a minha preferencia pessoal, já uso há 3 anos eu não penso em mudar =D.
+					Apesar de ser necessário compra licença você pode fazer download da versão para avaliação sem limitar as funcionalidades.
+			javascript
+				Todo conteúdo do curso será escrito em ES6, que é a versão oficial do javascript. Ve algumas funcionalidades novas que vamos utilizar:
+					arrows (https://babeljs.io/docs/learn-es2015/#arrows-and-lexical-this)
+					classes (https://babeljs.io/docs/learn-es2015/#classes)
+					promises (https://babeljs.io/docs/learn-es2015/#promises)
+			git
+				É necessário que você saiba utilizar as funcionalidades básicas de um repositório git. Para conseguir acompanhar o curso você vai precisar fazer um clone do repsitório e eventualmente trocar de branch. Para cada aula será criada uma branch, assim fica possível focar na funcionalidades ensinada em cada etapa. Ainda assim seria muito bom se você soubesse utilizar as seguintes funcionaldiades: clone, add, commit, pull, push e checkout.
+		O que você vai aprender
+			# bootstrap - como iniciar um applicativo React, é onde tudo começa
+			# render - como funciona e para que serve
+			# click - como capturar o click do usuário
+			# state - como criar um state inicial
+			# setState - como modificar o state
+
+		Ambiente
+			browser - google chrome
+				https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en
+			html
+			jsx e es6 com babel
+			referencia bibliotecas
+			Hello world
+				bootstrap
+
+		Ideologia
+			declarativo
+
+		statefull
+			state
+
+		lifecycle
+			criação
+				state inicial
+
+			render
+			onClick
+
+	Aula 02
+		pré-requisitos
+			javascript
+				Todo conteúdo do curso será escrito em ES6, que é a versão oficial do javascript. Ve algumas funcionalidades novas que vamos utilizar:
+					promises (https://babeljs.io/docs/learn-es2015/#promises)
+
+		Reutilizando componentes
+			statefull
+				props & state
+			passando valores como propriedades
+			input
+				defaultValue
+				value
+			evento 
+				onClick
+				onChange
+		lifecycle
+			criação
+				state inicial
+				props
+
+				componentWillMount
+				componentDidMount
+
+			alteração
+				componentWillReceiveProps(nextProps)
+				componentWillUpdate(nexProps, state)
+				componentDidUpdate (oldProps, oldState)
+
+		refs
+			methods
+		Todo list
+	Aula 03
+		CSS
+			style inline
+			class
