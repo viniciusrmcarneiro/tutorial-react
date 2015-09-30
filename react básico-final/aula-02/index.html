@@ -64,15 +64,7 @@
 					this.setState({despesa: despesa})
 				}
 
-				_removerDespesa(index){
-					var lista = this.state.lista
-					lista.splice(index,1);
-					this.setState({
-						lista: lista,
-					})
-				}
-
-				_SalvarEdicao(){
+				_salvarEdicao(){
 					var lista = this.state.lista;
 					lista[this.state.despesaEditandoIndex] = this.state.despesaEditando;
 					this.setState({
@@ -94,6 +86,14 @@
 					var despesaEditando = this.state.despesaEditando;
 					despesaEditando.valor = e.target.value;
 					this.setState({despesaEditando: despesaEditando})
+				}
+
+				_removerDespesa(index){
+					var lista = this.state.lista
+					lista.splice(index,1);
+					this.setState({
+						lista: lista,
+					})
 				}
 				_editarDespesa(index){
 					var despesaEditando = {
@@ -147,7 +147,7 @@
 												disabled={this.state.despesaEditando.descricao.length <= 0 ||
 													parseInt(this.state.despesaEditando.valor) <= 0
 												}
-												onClick={() => this._SalvarEdicao()}
+												onClick={() => this._salvarEdicao()}
 											>Salvar</button>
 											<button onClick={() => this._cancelarEdicao()}>Cancelar</button>
 										</li>
