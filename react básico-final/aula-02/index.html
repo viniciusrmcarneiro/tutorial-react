@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>React - Aula 02</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script>
+	</head>
+
+	<body>
+		<div>
+			<div id="meu-app-aula-02"></div>
+		</div>
+
+		<script type="text/babel">
+
+			class ViewMoeda extends React.Component {
+				render(){
+					
+				}
+			}
+
+			class ViewInteiro extends React.Component {
+				render(){
+
+				}
+			}
+			class 
+			class App02 extends React.Component{
+
+				constructor(){
+					super();
+					this.state = {
+						saldo: 0,
+					}
+				}
+
+				_somarContador(valor){
+					this.setState({
+						contador: this.state.contador + valor,
+					})
+				}
+
+				render(){
+					return (
+						<div>
+							<input type="text" placeholder="digite aqui o nome da despesa"/>
+							<input type="text" placeholder="$$$$$?"/>
+							<button onClick={() => this.IncluirDespesa({ this.refs. })}>Incluir</button>
+						</div>
+					);
+				}
+			}
+
+			React.render(<App02/>, document.getElementById('meu-app-aula-02'));
+		</script>
+	</body>
+</html>
