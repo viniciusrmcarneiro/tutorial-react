@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>React - Aula 02</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script>
+		<style>
+			button[disabled] {
+				color: lightgray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<div id="meu-app-aula-02"></div>
+		</div>
+
+		<script type="text/babel">
+			class App02 extends React.Component{
+
+				constructor(){
+					super();
+					this.state = {
+						despesa:{
+							descricao:'',
+							valor: 0,
+						},
+						lista:[],
+					}
+				}
+
+				_incluirDespesa(){
+					var lista = this.state.lista;
+					lista.push({
+						descricao: this.state.despesa.descricao,
+						valor:  this.state.despesa.valor,
+					})
+
+					var despesa = {
+						descricao: '',
+						valor: 0,
+					}
+
+					this.setState({
+						lista: lista,
+						despesa: despesa,
+					})
+				}
+
+				_onChangeDescricao(e){
+					var despesa = this.state.despesa;
+					despesa.descricao = e.target.value;
+					this.setState({despesa: despesa})
+				}
+				_onChangeValor(e){
+					if (!/^[0-9]*$/.test(e.target.value)){
+						return;
+					}
+
+					var despesa = this.state.despesa;
+					despesa.valor = e.target.value;
+					this.setState({despesa: despesa})
+				}
+
+				_salvarEdicao(){
+					var lista = this.state.lista;
+					lista[this.state.despesaEditandoIndex] = this.state.despesaEditando;
+					this.setState({
+						despesaEditando: null,
+						despesaEditandoIndex: null,
+						lista: lista,
+					})
+				}
+				_onChangeDescricaoEditando(e){
+					var despesaEditando = this.state.despesaEditando;
+					despesaEditando.descricao = e.target.value;
+					this.setState({despesaEditando: despesaEditando})
+				}
+				_onChangeValorEditando(e){
+					if (!/^[0-9]*$/.test(e.target.value)){
+						return;
+					}
+
+					var despesaEditando = this.state.despesaEditando;
+					despesaEditando.valor = e.target.value;
+					this.setState({despesaEditando: despesaEditando})
+				}
+
+				_removerDespesa(index){
+					var lista = this.state.lista
+					lista.splice(index,1);
+					this.setState({
+						lista: lista,
+					})
+				}
+				_editarDespesa(index){
+					var despesaEditando = {
+						descricao: this.state.lista[index].descricao,
+						valor: this.state.lista[index].valor,
+					}
+					this.setState({
+						despesaEditandoIndex: index,
+						despesaEditando: despesaEditando,
+					});
+				}
+				_cancelarEdicao(){
+					this.setState({
+						despesaEditando: null,
+						despesaEditandoIndex: null,
+					})
+				}
+
+				render(){
+					var total = this.state.lista.reduce((total, item)=> total + parseInt(item.valor), 0);
+					return (
+						<div>
+
+							<input 
+								value={this.state.despesa.descricao} 
+								onChange={(e) => this._onChangeDescricao(e)} 
+								type="text" placeholder="digite aqui o nome da despesa"/>
+
+							<input 
+								value={this.state.despesa.valor} 
+								onChange={(e) => this._onChangeValor(e)} 
+								type="text" placeholder="$$$$$"/>
+
+							<button 
+								disabled={this.state.despesa.descricao.length == 0 || 
+									parseInt(this.state.despesa.valor) <= 0} 
+								onClick={() => this._incluirDespesa()}>Incluir</button>
+							<ul>
+								{this.state.lista.map((item, index) =>{
+									if (index == this.state.despesaEditandoIndex){
+										return <li key={index}>
+											<input 
+												value={this.state.despesaEditando.descricao} 
+												onChange={(e) => this._onChangeDescricaoEditando(e)} 
+												type="text"/>
+											<input 
+												value={this.state.despesaEditando.valor}
+												onChange={(e) => this._onChangeValorEditando(e)} 
+												type="text"/>
+											<button
+												disabled={this.state.despesaEditando.descricao.length <= 0 ||
+													parseInt(this.state.despesaEditando.valor) <= 0
+												}
+												onClick={() => this._salvarEdicao()}
+											>Salvar</button>
+											<button onClick={() => this._cancelarEdicao()}>Cancelar</button>
+										</li>
+									}
+
+									return <li key={index}>
+										<button onClick={() => this._removerDespesa(index)}>Remover</button>
+										<button onClick={() => this._editarDespesa(index)}>Alterar</button>
+										<span>{`${item.descricao} - ${item.valor}`}</span>
+									</li>
+								})}
+							</ul>
+							<strong>{`Valor total gasto é ${total}`}</strong>
+						</div>
+					);
+				}
+			}
+
+			React.render(<App02/>, document.getElementById('meu-app-aula-02'));
+		</script>
+	</body>
+</html>
