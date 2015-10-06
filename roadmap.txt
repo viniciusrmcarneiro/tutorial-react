@@ -1,7 +1,7 @@
 React
 	Introdução
 		Porque react?
-			React é um framework desenvolvido pelo facebook 
+			React é uma library desenvolvido pelo facebook 
 			May 29, 2013
 
 		Qual é a abrangência do tutorial?
@@ -27,7 +27,7 @@ React
 			Atlassian
 	Aula 01
 		pré-requisitos
-			Sistema operacinal
+			Sistema operacional
 				Até a aula 06 tudo deve funcionar tanto no windows, mac os e linux. Minha sugestão para o desenvolvimento open source é não utilizar windows, pois muitos projetos não são validados nesse ambiente.
 
 			Editor de texto
@@ -82,31 +82,27 @@ React
 
 		Reutilizando componentes
 			statefull
-				props & state
-			passando valores como propriedades
+				state
 			input
-				defaultValue
 				value
+				onChange
+				validando valor
 			evento 
 				onClick
-				onChange
 		lifecycle
 			criação
 				state inicial
-				props
 
-				componentWillMount
-				componentDidMount
-
-			alteração
-				componentWillReceiveProps(nextProps)
-				componentWillUpdate(nexProps, state)
-				componentDidUpdate (oldProps, oldState)
-
-		refs
-			methods
-		Todo list
+		Lista de Despesas
 	Aula 03
-		CSS
-			style inline
-			class
+		webpack
+		chrome Debug
+		JSX
+			bind
+			chamando outros métodos
+
+		Reutilizando componentes
+			statefull
+				props & state
+			passando valores como propriedades
+			eventos como propriedades
