@@ -3,170 +3,122 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>React - Aula 02</title>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react-with-addons.js"></script>
-		<style>
-			button[disabled] {
-				color: lightgray;
-			}
-		</style>
 	</head>
-
 	<body>
-		<div>
-			<div id="meu-app-aula-02"></div>
+
+		<div style="border: 2px solid blue; margin: 10px;">
+			<div id="jsx-Div"></div>
 		</div>
 
+		<div style="border: 2px solid blue; margin: 10px;">
+			<div id="jsx-Variavel"></div>
+		</div>
+
+		<div style="border: 2px solid blue; margin: 10px;">
+			<div id="jsx-Loop"></div>
+		</div>
+
+		<div style="border: 2px solid blue; margin: 10px;">
+			<div id="jsx-Evento"></div>
+		</div>
+
+		<div style="border: 2px solid blue; margin: 10px;">
+			<div id="jsx-EventoBind"></div>
+		</div>
+
+		<div style="border: 2px solid blue; margin: 10px;">
+			<div id="jsx-Funcao"></div>
+		</div>
+
+
+
 		<script type="text/babel">
-			class App02 extends React.Component{
-
-				constructor(){
-					super();
-					this.state = {
-						despesa:{
-							descricao:'',
-							valor: 0,
-						},
-						lista:[],
-					}
-				}
-
-				_incluirDespesa(){
-					var lista = this.state.lista;
-					lista.push({
-						descricao: this.state.despesa.descricao,
-						valor:  this.state.despesa.valor,
-					})
-
-					var despesa = {
-						descricao: '',
-						valor: 0,
-					}
-
-					this.setState({
-						lista: lista,
-						despesa: despesa,
-					})
-				}
-
-				_onChangeDescricao(e){
-					var despesa = this.state.despesa;
-					despesa.descricao = e.target.value;
-					this.setState({despesa: despesa})
-				}
-				_onChangeValor(e){
-					if (!/^[0-9]*$/.test(e.target.value)){
-						return;
-					}
-
-					var despesa = this.state.despesa;
-					despesa.valor = e.target.value;
-					this.setState({despesa: despesa})
-				}
-
-				_salvarEdicao(){
-					var lista = this.state.lista;
-					lista[this.state.despesaEditandoIndex] = this.state.despesaEditando;
-					this.setState({
-						despesaEditando: null,
-						despesaEditandoIndex: null,
-						lista: lista,
-					})
-				}
-				_onChangeDescricaoEditando(e){
-					var despesaEditando = this.state.despesaEditando;
-					despesaEditando.descricao = e.target.value;
-					this.setState({despesaEditando: despesaEditando})
-				}
-				_onChangeValorEditando(e){
-					if (!/^[0-9]*$/.test(e.target.value)){
-						return;
-					}
-
-					var despesaEditando = this.state.despesaEditando;
-					despesaEditando.valor = e.target.value;
-					this.setState({despesaEditando: despesaEditando})
-				}
-
-				_removerDespesa(index){
-					var lista = this.state.lista
-					lista.splice(index,1);
-					this.setState({
-						lista: lista,
-					})
-				}
-				_editarDespesa(index){
-					var despesaEditando = {
-						descricao: this.state.lista[index].descricao,
-						valor: this.state.lista[index].valor,
-					}
-					this.setState({
-						despesaEditandoIndex: index,
-						despesaEditando: despesaEditando,
-					});
-				}
-				_cancelarEdicao(){
-					this.setState({
-						despesaEditando: null,
-						despesaEditandoIndex: null,
-					})
-				}
-
+			class JSXDiv extends React.Component{
 				render(){
-					var total = this.state.lista.reduce((total, item)=> total + parseInt(item.valor), 0);
-					return (
-						<div>
-
-							<input 
-								value={this.state.despesa.descricao} 
-								onChange={(e) => this._onChangeDescricao(e)} 
-								type="text" placeholder="digite aqui o nome da despesa"/>
-
-							<input 
-								value={this.state.despesa.valor} 
-								onChange={(e) => this._onChangeValor(e)} 
-								type="text" placeholder="$$$$$"/>
-
-							<button 
-								disabled={this.state.despesa.descricao.length == 0 || 
-									parseInt(this.state.despesa.valor) <= 0} 
-								onClick={() => this._incluirDespesa()}>Incluir</button>
-							<ul>
-								{this.state.lista.map((item, index) =>{
-									if (index == this.state.despesaEditandoIndex){
-										return <li key={index}>
-											<input 
-												value={this.state.despesaEditando.descricao} 
-												onChange={(e) => this._onChangeDescricaoEditando(e)} 
-												type="text"/>
-											<input 
-												value={this.state.despesaEditando.valor}
-												onChange={(e) => this._onChangeValorEditando(e)} 
-												type="text"/>
-											<button
-												disabled={this.state.despesaEditando.descricao.length <= 0 ||
-													parseInt(this.state.despesaEditando.valor) <= 0
-												}
-												onClick={() => this._salvarEdicao()}
-											>Salvar</button>
-											<button onClick={() => this._cancelarEdicao()}>Cancelar</button>
-										</li>
-									}
-
-									return <li key={index}>
-										<button onClick={() => this._removerDespesa(index)}>Remover</button>
-										<button onClick={() => this._editarDespesa(index)}>Alterar</button>
-										<span>{`${item.descricao} - ${item.valor}`}</span>
-									</li>
-								})}
-							</ul>
-							<strong>{`Valor total gasto é ${total}`}</strong>
-						</div>
-					);
+					return <div>
+						<h2>Sou header</h2>
+					</div>
 				}
 			}
 
-			React.render(<App02/>, document.getElementById('meu-app-aula-02'));
+			class JSXVariavel extends React.Component{
+				render(){
+					var titulo = "Sou o header e hoje é dia " + new Date().getDate()
+					return <div>
+						<h2>{titulo}</h2>
+					</div>
+				}
+			}
+
+			class JSXLoop extends React.Component{
+				render(){
+					var items = ["um","dois","três"]
+					return <div>
+						<h2>Número</h2>
+						<ul>
+							{items.map((numero) => <li>{numero}</li>)}
+						</ul>
+					</div>
+				}
+			}
+
+			class JSXEvento extends React.Component{
+				render(){
+					var quandoClicar = function () {
+						alert("FUI CLICADO");
+					}
+					return <div>
+						<button onClick={quandoClicar}>Clique aqui</button>
+					</div>
+				}
+			}
+
+			class JSXEventoBind extends React.Component{
+
+				_click_contexto_react_1(){
+					console.log('_click_contexto_react_1=>', this) // está no contexto do component react
+				}
+				_click_contexto_react_2(){
+					console.log('_click_contexto_react_2=>', this) // está no contexto do component react
+				}
+				_click_contexto_html(){
+					console.log('_click_contexto_html=>', this) // está no contexto do click que ocorreu no html
+				}
+				render(){
+					return <div>
+						<button onClick={()=> this._click_contexto_react_1()}>Contexto componente react 1</button>
+						<button onClick={this._click_contexto_react_2.bind(this)}>Contexto componente react 2</button>
+						<button onClick={this._click_contexto_html}>Contexto click html</button>
+					</div>
+				}
+			}
+
+			class JSXFuncao extends React.Component{
+				render(){
+					var sub_render = function(){
+						return <div>
+							<p>Sou um texto criado pelo sub_render</p>
+						</div>
+					}
+					return <div>
+						<button>Botão 1</button>
+						<div>
+							{sub_render()}
+						</div>
+					</div>
+				}
+			}
+
+			React.render(<JSXDiv/>, document.getElementById('jsx-Div'));
+			React.render(<JSXVariavel/>, document.getElementById('jsx-Variavel'));
+			React.render(<JSXLoop/>, document.getElementById('jsx-Loop'));
+			React.render(<JSXEvento/>, document.getElementById('jsx-Evento'));
+			React.render(<JSXEventoBind/>, document.getElementById('jsx-EventoBind'));
+			React.render(<JSXFuncao/>, document.getElementById('jsx-Funcao'));
+
 		</script>
 	</body>
 </html>
+
