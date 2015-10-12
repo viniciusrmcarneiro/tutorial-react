@@ -1,12 +1,12 @@
 var path = require('path');
 const config = {
 	entry: {
-		app: path.join(__dirname, '/index.js'),
+		app: ???,
 	},
 	output: {
-		path: __dirname,
-		filename: 'bundle.js',
-		publicPath: '/',
+		path: ???,
+		filename: ???,
+		publicPath: ???,
 	},
 	devtool: 'source-map',
 	debug: true,
