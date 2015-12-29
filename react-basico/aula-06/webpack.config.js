@@ -19,7 +19,6 @@ const config = {
 
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new require('nyan-progress-webpack-plugin')(),
 	],
 	devtool: 'source-map',
 	debug: true,

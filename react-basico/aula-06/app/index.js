@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, } from 'react-router'
 
 import App from './app'
+import Login from './login'
 
 
 const Routes = (
@@ -10,7 +11,12 @@ const Routes = (
 		<Route 
 			path="/" 
 			component={App}
-		/>
+		>
+			<Route 
+				path="login" 
+				component={Login}
+			/>
+		</Route>
 	</Router>
 );
 
