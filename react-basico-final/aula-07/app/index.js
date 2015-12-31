@@ -8,16 +8,16 @@ import Login from './login'
 
 const Routes = (
 	<Router>
-		<Route 
-			path="/" 
+		<Route
+			path="/"
 			component={App}
 		>
-			<Route 
-				path="login" 
+			<Route
+				path="login"
 				component={Login}
 			/>
 		</Route>
 	</Router>
 );
 
-ReactDOM.render(Routes, document.getElementById('meu-app-aula-06'));
+ReactDOM.render(Routes, document.getElementById('meu-app-aula-07'));
